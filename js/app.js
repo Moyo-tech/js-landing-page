@@ -29,11 +29,11 @@ var isInViewport = function (elem) {
     distance.top >= 0 &&
     distance.left >= 0 &&
     distance.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
+    (window.innerHeight || document.documentElement.clientHeight) &&
     distance.right <=
-      (window.innerWidth || document.documentElement.clientWidth)
-  );
-};
+    (window.innerWidth || document.documentElement.clientWidth)
+  )
+}
 
 /* End Helper Functions*/
 
@@ -64,10 +64,10 @@ function buildNav(list) {
       childNodes.forEach((item) => {
         item.style.cssText =
           "text-decoration: none; color: #40b2c9; font-size: 17px; font-weight: 500; transition: 0.5s; font-family: Merriweather, serif";
-      });
-    });
+      })
+    })
   }
-  styleNav();
+  styleNav()
 }
 
 /*Function to scroll to specific section when it is clicked upon on the navbar */
@@ -81,9 +81,9 @@ function navFunc() {
       //get the attribute link which we are to scroll to and scroll to it
       document.querySelector(this.getAttribute("href")).scrollIntoView({
         behavior: "smooth",
-      });
-    });
-  });
+      })
+    })
+  })
 }
 
 /* Function to distingush section when it is in viewport and set the class to be active */
@@ -97,22 +97,22 @@ function distinguishSection(entries) {
       // Add class 'active' to section when near top of viewport, style would be displayed if it is active
       method.target.classList.toggle("active");
     }
-  });
+  })
 }
 
 //Intersectionobserver API used intead of getBoundingClientRect to imrpove performance
 let observer = new IntersectionObserver(distinguishSection, {
-  threshold: [1], //threshold 1 means when 100% of the target is visible
-});
+  threshold: [1] //threshold 1 means when 100% of the target is visible
+})
 //looping through the targetsection because it in a node list format
 targetSection.forEach((elem) => {
   //passing it element in the list(section) as an argument to the function observer
   observer.observe(elem);
-});
+})
 
 //calling functions
-buildNav(array);
-navFunc();
+buildNav(array)
+navFunc()
 
 /**
  * End Main Functions
